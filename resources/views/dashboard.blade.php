@@ -49,6 +49,11 @@
                             <i class="fa-light fa-trash-can"></i>
                         </button>
                     </form>
+                    <form action="{{ route('item.done', $task->id) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit">Tandai Selesai</button>
+                    </form>
                 </li>
             @endforeach
         </ul>

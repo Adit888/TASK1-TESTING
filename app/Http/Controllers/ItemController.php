@@ -55,4 +55,14 @@ class ItemController extends Controller
             'tagString' => $tagString,
         ];
     }
+
+    public function markAsDone($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->is_done = true;
+        $task->save();
+
+        return redirect()->route('dashboard')->with('success', 'Tugas ditandai sebagai selesai.');
+    }
+
 }
