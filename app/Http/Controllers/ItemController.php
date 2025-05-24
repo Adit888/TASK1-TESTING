@@ -56,6 +56,15 @@ class ItemController extends Controller
         ];
     }
 
+    public function markImportant($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->is_important = true;
+        $task->save();
+
+        return redirect()->route('dashboard');
+    }
+
     public function markAsDone($id)
     {
         $task = Task::findOrFail($id);
@@ -64,5 +73,8 @@ class ItemController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Tugas ditandai sebagai selesai.');
     }
+
+
+
 
 }

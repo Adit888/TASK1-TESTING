@@ -20,10 +20,17 @@ class CalculatorHelper
         return $a * $b; // ada typo harusnya *
     }
 
-    public static function modulus($a, $b){
-        if ($b == 0) {
-            throw new \InvalidArgumentException("Pembagi tidak boleh nol.");
+    public static function isPrimeSum($a, $b)
+    {
+        $sum = $a + $b;
+        if ($sum < 2) return false;
+
+        for ($i = 2; $i <= sqrt($sum); $i++) {
+            if ($sum % $i === 0) {
+                return false;
+            }
         }
-        return $a % $b;
+        return true;
     }
+
 }

@@ -101,4 +101,23 @@ class FeatureTodoTest extends TestCase
             'is_done' => true,
         ]);
     }
+
+    public function testMarkTaskAsImportant()
+    {
+        // Simulasikan tambah tugas
+        $this->post(route('item.store'), ['item' => 'Tugas Penting']);
+
+        $task = \App\Models\Task::latest()->first();
+
+        // Tandai sebagai penting
+        $this->post(route('item.important', $task->id))
+            ->assertRedirect(route('dashboard'));
+
+        $this->assertDatabaseHas('tasks', [
+            'id' => $task->id,
+            'is_important' => true,
+        ]);
+    }
+
+    
 }

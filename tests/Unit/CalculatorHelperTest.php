@@ -8,24 +8,13 @@ use PHPUnit\Framework\TestCase;
 
 class CalculatorHelperTest extends TestCase
 {
-   public function testModulus()
+    public function testIsPrimeSum()
     {
-        $this->assertEquals(0, CalculatorHelper::modulus(a: 10, b: 2));
-    }
-
-
-    public function testMultipleModulus()
-    {
-        $cases = [
-            [10, 3, 1],
-            [9, 2, 1],
-            [8, 5, 3],
-            [7, 7, 0],
-        ];
-
-        foreach ($cases as [$a, $b, $expected]) {
-            $this->assertEquals($expected, CalculatorHelper::modulus($a, $b), "Failed on: $a % $b");
-        }
+        $this->assertTrue(CalculatorHelper::isPrimeSum(2, 3));   // 5 → Prime
+        $this->assertFalse(CalculatorHelper::isPrimeSum(2, 2));  // 4 → Not prime
+        $this->assertTrue(CalculatorHelper::isPrimeSum(5, 6));   // 11 → Prime
+        $this->assertFalse(CalculatorHelper::isPrimeSum(0, 0));  // 0 → Not prime
+        $this->assertTrue(CalculatorHelper::isPrimeSum(10, 3));  // 13 → Prime
     }
 
 

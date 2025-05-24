@@ -24,5 +24,8 @@ Route::post('/calculator', [CalculatorController::class, 'calculate']);
 Route::get('/loan', [LoanCalculatorController::class, 'index']);
 Route::post('/loan', [LoanCalculatorController::class, 'calculate']);
 
-// mark as done
 Route::patch('/item/{id}/done', [ItemController::class, 'markAsDone'])->name('item.done');
+
+
+Route::post('/item/{id}/important', [ItemController::class, 'markImportant'])->name('item.important');
+
